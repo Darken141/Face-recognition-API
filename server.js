@@ -30,13 +30,10 @@ app.get('/', (req, res) => {
 })
 
 app.post('/signin', (req, res) => signIn.handleSignIn(req, res, db, bCrypt))
-
 app.post('/register', (req, res) => register.handleRegister(req, res, db, bCrypt));
-
 app.get('/profile/:id', (req, res) => profile.hangleProfileGet(req, res, db))
-
 app.put('/image', (req, res) => image.handlePutImage(req, res, db))
 
-app.listen(3000, () => {
-    console.log('app is listening on port 3000');
+app.listen(process.env.PORT || 3000, () => {
+    console.log(`app is listening on port ${process.env.PORT}`);
 })
